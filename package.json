@@ -9,16 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.0.2",
+    "@t3-oss/env-nextjs": "^0.7.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "contentlayer": "^0.3.4",
+    "date-fns": "^2.30.0",
     "lucide-react": "^0.294.0",
     "next": "14.0.3",
+    "next-contentlayer": "^0.3.4",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -26,6 +33,13 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
     "postcss": "^8",
+    "prettier-plugin-tailwindcss": "^0.5.9",
+    "rehype": "^13.0.1",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-pretty-code": "^0.12.1",
+    "rehype-slug": "^6.0.0",
+    "remark": "^15.0.1",
+    "remark-gfm": "^4.0.0",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }
