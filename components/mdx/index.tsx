@@ -6,8 +6,8 @@ import Image from 'next/image';
 
 import { cn } from '@/lib/utils';
 
-import { Callout } from '@/components/callout';
-import { MdxCard } from '@/components/mdx-card';
+import { MdxCallout } from '@/components/mdx/callout';
+import { MdxCard } from '@/components/mdx/card';
 
 interface ComponentProps {
   className?: string | undefined;
@@ -155,7 +155,7 @@ const components = {
     />
   ),
   Image,
-  Callout,
+  Callout: MdxCallout,
   Card: MdxCard,
 };
 

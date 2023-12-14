@@ -1,4 +1,4 @@
-import { marketingConfig } from '@/config/marketing';
+import { aboutConfig } from '@/config/about';
 
 import Link from 'next/link';
 
@@ -8,18 +8,16 @@ import { MainNav } from '@/components/main-nav';
 import { SiteFooter } from '@/components/site-footer';
 import { buttonVariants } from '@/components/ui/button';
 
-interface MarketingLayoutProps {
+interface AboutLayoutProps {
   children: React.ReactNode;
 }
 
-export default async function MarketingLayout({
-  children,
-}: MarketingLayoutProps) {
+export default async function AboutLayout({ children }: AboutLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-14 items-center">
-          <MainNav items={marketingConfig.mainNav} />
+          <MainNav items={aboutConfig.mainNav} />
         </div>
       </header>
       <main className="flex-1">{children}</main>

@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 
 import { absoluteUrl } from '@/lib/utils';
 
-import { Mdx } from '@/components/mdx-components';
+import { Mdx } from '@/components/mdx';
 
 import '@/styles/mdx.css';
 
