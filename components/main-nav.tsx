@@ -22,10 +22,11 @@ export function MainNav({ items, children }: MainNavProps) {
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
 
   return (
-    <div className="flex gap-6 md:gap-10">
+    <div className="flex w-full justify-between gap-6 md:gap-10">
       <Link href="/" className="hidden items-center space-x-2 md:flex">
         <span className="hidden text-2xl font-bold sm:inline-block">
-          mitblr.club
+          mitblr
+          <span className="text-primary">{'.'}club</span>
         </span>
       </Link>
       {items?.length ? (
