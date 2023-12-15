@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 
 import { MdxCallout } from '@/components/mdx/callout';
 import { MdxCard } from '@/components/mdx/card';
+import { MdxGithubLabel } from '@/components/mdx/github-label';
 
 interface ComponentProps {
   className?: string | undefined;
@@ -157,6 +158,7 @@ const components = {
   Image,
   Callout: MdxCallout,
   Card: MdxCard,
+  GithubLabel: MdxGithubLabel,
 };
 
 interface MdxProps {
