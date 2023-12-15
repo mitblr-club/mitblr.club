@@ -1,43 +1,34 @@
-import { siteConfig } from '@/config/site';
-
 import * as React from 'react';
 
 import Link from 'next/link';
 
-import { MainNavItem } from 'types';
+import { NavItem } from 'types';
 
 import { cn } from '@/lib/utils';
 
 import { useLockBody } from '@/hooks/use-lock-body';
 
-import { Icons } from '@/components/icons';
-
 interface MobileNavProps {
-  items: MainNavItem[];
-  children?: React.ReactNode;
+  items: NavItem[];
 }
 
-export function MobileNav({ items, children }: MobileNavProps) {
+export function MobileNav({ items }: MobileNavProps) {
   useLockBody();
 
   return (
     <div
       className={cn(
-        'fixed inset-0 top-16 z-50 grid h-[calc(100vh-4rem)] grid-flow-row auto-rows-max overflow-auto p-6 pb-32 shadow-md animate-in slide-in-from-bottom-80 md:hidden'
+        'fixed inset-0 top-14 z-50 grid h-[calc(100vh-4rem)] grid-flow-row auto-rows-max overflow-auto pb-32 shadow-md animate-in fade-in-40 md:hidden'
       )}
     >
-      <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
-        <Link href="/" className="flex items-center space-x-2">
-          <Icons.logo />
-          <span className="font-bold">{siteConfig.name}</span>
-        </Link>
-        <nav className="grid grid-flow-row auto-rows-max text-sm">
+      <div className="relative z-50 grid gap-6 rounded-md bg-background px-6 py-3 text-foreground shadow-lg">
+        <nav>
           {items.map((item, index) => (
             <Link
               key={index}
               href={item.disabled ? '#' : item.href}
               className={cn(
-                'flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline',
+                'text-md flex w-full items-center rounded-md p-2 font-medium hover:underline',
                 item.disabled && 'cursor-not-allowed opacity-60'
               )}
             >
@@ -45,7 +36,6 @@ export function MobileNav({ items, children }: MobileNavProps) {
             </Link>
           ))}
         </nav>
-        {children}
       </div>
     </div>
   );

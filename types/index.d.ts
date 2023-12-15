@@ -6,8 +6,6 @@ export type NavItem = {
   disabled?: boolean;
 };
 
-export type MainNavItem = NavItem;
-
 export type SidebarNavItem = {
   title: string;
   disabled?: boolean;
@@ -29,6 +27,7 @@ export type SiteConfig = {
   description: string;
   url: string;
   ogImage: string;
+  navItems: NavItem[];
   links: {
     twitter: string;
     github: string;
