@@ -5,9 +5,6 @@ import { siteConfig } from '@/config/site';
 
 import { cn } from '@/lib/utils';
 
-import { SiteFooter } from '@/components/site-footer';
-import { SiteHeader } from '@/components/site-header';
-
 import '@/styles/globals.css';
 
 const fontSans = FontSans({
@@ -83,11 +80,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           fontHeading.variable
         )}
       >
-        <div className="flex min-h-screen flex-col">
-          <SiteHeader />
-          <main className="flex-1">{children}</main>
-          <SiteFooter />
-        </div>
+        {children}
       </body>
     </html>
   );
