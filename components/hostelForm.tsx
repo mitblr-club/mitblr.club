@@ -68,7 +68,7 @@ export default function HostelForm(
                 </Select>
             </div>
             <div className="flex flex-col gap-4">
-              <Label htmlFor="hostel" className="text-lg">Mess*</Label>
+              <Label htmlFor="mess" className="text-lg">Mess*</Label>
                 <Select>
                     <SelectTrigger className="w-fit">
                         <SelectValue placeholder="Fixed - BlueDove" />

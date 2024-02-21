@@ -2,13 +2,12 @@
 
 import { useState } from "react"
 
-import { Button } from "@/components/ui/button"
-
 import StepBar from "@/components/stepbar"
 import PersonalForm from "@/components/personalform"
 import HostelForm from "@/components/hostelForm"
+import CourseForm from "@/components/courseForm"
 
-export default function Login(){
+export default function SignUp(){
 
   // Step Count
   const [step, setStep] = useState(1)
@@ -22,6 +21,10 @@ export default function Login(){
   // Hostel Form Props
   const [hostelStatus, setHostelStatus] = useState("Hostel - On Campus")
   const [messStatus, setMessStatus] = useState("Fixed - BlueDove")
+
+  // Course Form Props
+  const [course, setCourse] = useState("CSE(Core)")
+  const [gradYear, setGradYear] = useState("2025")
 
   return(
     <div className="flex flex-col justify-around items-center gap-16 px-0 py-10">
@@ -46,6 +49,11 @@ export default function Login(){
           hostelStatus={hostelStatus} setHostelStatus={setHostelStatus}
           messStatus={messStatus} setMessStatus={setMessStatus}
           step={step} setStep={setStep}
+          />
+          : step === 3 ?
+          <CourseForm
+          course={course} setCourse={setCourse}
+          gradYear={gradYear} setGradYear={setGradYear}
           />
           : null
         }
