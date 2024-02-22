@@ -20,7 +20,6 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-import StepBar from './stepbar';
 
 export default function HostelForm({
   hostelStatus,

@@ -12,8 +12,6 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-import StepBar from './stepbar';
-
 export default function PersonalForm({
   name,
   setName,
