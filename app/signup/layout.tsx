@@ -1,17 +1,17 @@
-import { useContext } from 'react';
+'use client';
 
-import { SignUpContext } from '@/components/signup/context';
-import Header from '@/components/signup/header';
+import React from 'react';
 
-export default function SignUpContainer() {
-  const { activeStep, direction } = useContext(SignUpContext);
+import { SignUpContextProvider } from '@/components/signup/context';
 
+export default function SignUpLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
-      <div className="lg:hidden">
-        <Header activeStep={activeStep} />
-      </div>
-      <div className="hidden lg:flex lg:min-h-screen lg:items-center lg:justify-center"></div>
+      <SignUpContextProvider>{children}</SignUpContextProvider>
     </>
   );
 }

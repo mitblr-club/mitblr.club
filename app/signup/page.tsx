@@ -1,71 +1,58 @@
 'use client';
 
-import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
-import CourseForm from '@/components/courseForm';
-import HostelForm from '@/components/hostelForm';
-import PersonalForm from '@/components/personalform';
-import StepBar from '@/components/stepbar';
+import { useContext } from 'react';
 
-export default function SignUp() {
-  // Step Count
-  const [step, setStep] = useState(1);
+import {
+  confirmVariants,
+  containerVariants,
+  firstStepVariants,
+} from '@/lib/variants';
 
-  // Personal Form Props
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-  const [appNo, setAppNo] = useState('');
-  const [regNo, setRegNo] = useState('');
+import { SignUpContext } from '@/components/signup/context';
+import { Footer } from '@/components/signup/footer';
+import { Header } from '@/components/signup/header';
+import { Step1 } from '@/components/signup/step-1';
+import { Step2 } from '@/components/signup/step-2';
+import { Step3 } from '@/components/signup/step-3';
+import { Step4 } from '@/components/signup/step-4';
 
-  // Hostel Form Props
-  const [hostelStatus, setHostelStatus] = useState('Hostel - On Campus');
-  const [messStatus, setMessStatus] = useState('Fixed - BlueDove');
-
-  // Course Form Props
-  const [course, setCourse] = useState('CSE(Core)');
-  const [gradYear, setGradYear] = useState('2025');
+export default function SignUpContainer() {
+  const { activeStep, direction } = useContext(SignUpContext);
 
   return (
-    <div className="flex flex-col items-center justify-around gap-16 px-0 py-10">
-      <div className="flex flex-col md:flex-row">
-        <div className="border-0 px-0 py-4 text-center text-5xl font-bold md:px-8 lg:text-8xl xl:text-7xl">
-          mitblr<span className="text-primary">.club</span>
-        </div>
-      </div>
+    <>
+      <div className="lg:hidden">
+        <Header activeStep={activeStep} />
+        <AnimatePresence initial={false} mode="wait" custom={direction}>
+          <motion.div
+            key={activeStep}
+            variants={
+              activeStep === 1
+                ? firstStepVariants
+                : activeStep === 4
+                  ? confirmVariants
+                  : containerVariants
+            }
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            custom={direction}
+            className="absolute left-0 right-0 top-20 mx-auto min-h-[50%] w-[85%] rounded-md bg-neutral-100 p-4 shadow-md"
+          >
+            {activeStep === 1 && <Step1 />}
 
-      <div className="flex flex-col items-center gap-1">
-        {step === 1 ? (
-          <PersonalForm
-            name={name}
-            setName={setName}
-            number={number}
-            setNumber={setNumber}
-            appNo={appNo}
-            setAppNo={setAppNo}
-            regNo={regNo}
-            setRegNo={setRegNo}
-            step={step}
-            setStep={setStep}
-          />
-        ) : step === 2 ? (
-          <HostelForm
-            hostelStatus={hostelStatus}
-            setHostelStatus={setHostelStatus}
-            messStatus={messStatus}
-            setMessStatus={setMessStatus}
-            step={step}
-            setStep={setStep}
-          />
-        ) : step === 3 ? (
-          <CourseForm
-            course={course}
-            setCourse={setCourse}
-            gradYear={gradYear}
-            setGradYear={setGradYear}
-          />
-        ) : null}
-        <StepBar step={step} />
+            {activeStep === 2 && <Step2 />}
+
+            {activeStep === 3 && <Step3 />}
+
+            {activeStep === 4 && <Step4 />}
+          </motion.div>
+        </AnimatePresence>
+        {activeStep <= 4 && <Footer />}
       </div>
-    </div>
+      <div className="hidden lg:flex lg:min-h-screen lg:items-center lg:justify-center"></div>
+    </>
   );
 }

@@ -51,7 +51,11 @@ export const SignUpContext = React.createContext<SignUpContext>(
   {} as SignUpContext
 );
 
-export function SignUpContextProvider({ children }: { children: JSX.Element }) {
+export function SignUpContextProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [firstStepData, setFirstStepData] = useState({
     name: '',
     email: '',
