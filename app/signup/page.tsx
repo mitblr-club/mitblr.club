@@ -24,7 +24,7 @@ export default function SignUpContainer() {
   return (
     <>
       <div className="lg:hidden">
-        <Header activeStep={activeStep} />
+        <Header />
         <AnimatePresence initial={false} mode="wait" custom={direction}>
           <motion.div
             key={activeStep}
