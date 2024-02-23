@@ -10,4 +10,16 @@ module.exports = withContentlayer({
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'abhigyantrips.dev',
+      },
+    ],
+    domains: ['abhigyantrips.dev'],
+    formats: ['image/avif', 'image/webp'],
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
 });
