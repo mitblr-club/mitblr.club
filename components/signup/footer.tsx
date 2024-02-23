@@ -13,12 +13,11 @@ export function Footer() {
     setFirstStepErrors,
     firstStepData,
   } = useContext(SignUpContext);
-
   return (
     <footer
-      className={`flex w-full items-center bg-background ${
+      className={`flex w-full items-start bg-background ${
         activeStep > 1 ? 'justify-between' : 'justify-end'
-      } fixed bottom-0 left-0 right-0 h-20 border-t border-neutral-500 p-4`}
+      } fixed bottom-0 left-0 right-0 h-24 p-4`}
     >
       {activeStep > 1 && (
         <Button
@@ -27,7 +26,6 @@ export function Footer() {
             setDirection(-1);
           }}
           variant="ghost"
-          className="font-semibold"
         >
           Go Back
         </Button>
@@ -55,9 +53,8 @@ export function Footer() {
             setDirection(1);
           }
         }}
-        className="font-semibold"
       >
-        {activeStep === 4 ? 'Confirm' : 'Next Step'}
+        {activeStep === 3 ? 'Confirm' : 'Next Step'}
       </Button>
     </footer>
   );

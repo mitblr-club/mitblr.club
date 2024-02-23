@@ -24,11 +24,8 @@ export function Step2() {
         className="text-2xl font-bold capitalize"
         onClick={() => console.log(firstStepErrors)}
       >
-        Personal info
+        Sign Up
       </h4>
-      <p className="my-4 font-normal text-neutral-400 md:text-lg">
-        Please provide your name, email address, and phone number.
-      </p>
       <div>
         <div className="mb-5 flex flex-col">
           <div className="flex w-full flex-col lg:flex-row lg:items-center lg:justify-between">
