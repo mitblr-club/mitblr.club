@@ -15,9 +15,9 @@ export function Footer() {
   } = useContext(SignUpContext);
   return (
     <footer
-      className={`flex w-full items-start bg-background ${
+      className={`${
         activeStep > 1 ? 'justify-between' : 'justify-end'
-      } fixed bottom-0 left-0 right-0 h-24 p-4`}
+      } fixed bottom-0 left-0 right-0 flex h-24 w-full items-center bg-background p-4`}
     >
       {activeStep > 1 && (
         <Button
@@ -31,29 +31,7 @@ export function Footer() {
         </Button>
       )}
 
-      <Button
-        onClick={() => {
-          if (activeStep === 1) {
-            FirstStepValidationSchema.validate(firstStepData, {
-              abortEarly: false,
-            })
-              .then(function (value) {
-                console.log(value);
-                setFirstStepErrors([]);
-
-                setActiveStep((prev) => prev + 1);
-                setDirection(1);
-              })
-              .catch(function (err) {
-                setFirstStepErrors(err.inner);
-                console.log(err.inner);
-              });
-          } else {
-            setActiveStep((prev) => prev + 1);
-            setDirection(1);
-          }
-        }}
-      >
+      <Button form={`${activeStep}`} type="submit">
         {activeStep === 3 ? 'Confirm' : 'Next Step'}
       </Button>
     </footer>

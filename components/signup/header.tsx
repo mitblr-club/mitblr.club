@@ -9,7 +9,8 @@ export function Header({ activeStep }: { activeStep: number }) {
         src="https://abhigyantrips.dev/assets/background.jpg"
         alt="bg-sidebar-mobile"
         fill
-        objectFit="cover"
+        style={{ objectFit: 'cover' }}
+        priority
       />
       <div className="absolute left-0 right-0 top-6">
         <ul className=" flex items-center justify-center ">

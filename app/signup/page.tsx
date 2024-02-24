@@ -10,6 +10,7 @@ import {
   firstStepVariants,
 } from '@/lib/variants';
 
+import { ButtonContainer } from '@/components/signup/button-container';
 import { SignUpContext } from '@/components/signup/context';
 import { Footer } from '@/components/signup/footer';
 import { Header } from '@/components/signup/header';
@@ -19,38 +20,46 @@ import { Step3 } from '@/components/signup/step-3';
 import { Step4 } from '@/components/signup/step-4';
 
 export default function SignUpContainer() {
-  const { activeStep, direction } = useContext(SignUpContext);
+  const { activeStep, setActiveStep, direction, setDirection } =
+    useContext(SignUpContext);
 
   return (
     <>
       <div className="lg:hidden">
         <Header activeStep={activeStep} />
         <AnimatePresence initial={false} mode="wait" custom={direction}>
-          <motion.div
-            key={activeStep}
-            variants={
-              activeStep === 1
-                ? firstStepVariants
-                : activeStep === 4
-                  ? confirmVariants
-                  : containerVariants
-            }
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            custom={direction}
-            className="absolute left-0 right-0 top-20 mx-auto min-h-[50%] w-[85%] rounded-md bg-neutral-100 p-4 shadow-md"
-          >
-            {activeStep === 1 && <Step1 />}
+          <div className="absolute left-0 right-0 top-20 mx-auto min-h-fit w-[85%] rounded-md bg-neutral-100 p-4 shadow-md transition-transform">
+            <h4 className="mb-4 text-2xl font-bold capitalize">Sign Up</h4>
+            <motion.div
+              key={activeStep}
+              variants={
+                activeStep === 1
+                  ? firstStepVariants
+                  : activeStep === 4
+                    ? confirmVariants
+                    : containerVariants
+              }
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              custom={direction}
+            >
+              {activeStep === 1 && <Step1 />}
 
-            {activeStep === 2 && <Step2 />}
+              {activeStep === 2 && <Step2 />}
 
-            {activeStep === 3 && <Step3 />}
+              {activeStep === 3 && <Step3 />}
 
-            {activeStep === 4 && <Step4 />}
-          </motion.div>
+              {activeStep === 4 && <Step4 />}
+            </motion.div>
+            <ButtonContainer
+              activeStep={activeStep}
+              setActiveStep={setActiveStep}
+              setDirection={setDirection}
+            />
+          </div>
         </AnimatePresence>
-        {activeStep <= 4 && <Footer />}
+        <Footer />
       </div>
       <div className="hidden lg:flex lg:min-h-screen lg:items-center lg:justify-center"></div>
     </>
