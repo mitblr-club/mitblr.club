@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import * as y from 'yup';
 
@@ -13,6 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
@@ -22,19 +24,21 @@ import {
 } from '@/components/ui/select';
 
 const secondStepSchema = y.object().shape({
-  hostelBlock: y.string().required('This field is required'),
-  messProvider: y.string().required('This field is required'),
+  applicationNumber: y
+    .string()
+    .matches(/^12[1234]\d{6}$/, 'Input is invalid')
+    .required('This field is required'),
+  registrationNumber: y
+    .string()
+    .matches(/^2[1234]\d{7}$/, 'Input is invalid')
+    .required('This field is required'),
+
+  yearOfGrad: y.string().required('This field is required'),
 });
 
 export function Step2() {
-  const {
-    activeStep,
-    setActiveStep,
-    setDirection,
-    secondStepData,
-    setSecondStepData,
-    secondStepErrors,
-  } = useContext(SignUpContext);
+  const { activeStep, setActiveStep, secondStepData, setSecondStepData } =
+    useContext(SignUpContext);
   const form = useForm<y.InferType<typeof secondStepSchema>>({
     resolver: yupResolver(secondStepSchema),
   });
@@ -43,78 +47,70 @@ export function Step2() {
     console.log(values);
     setSecondStepData(values);
     setActiveStep((prev) => prev + 1);
-    setDirection(1);
   }
 
   return (
     <>
-      <div>
+      <motion.div
+        className="flex flex-col"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 100 }}
+        exit={{ opacity: 0 }}
+        transition={{ ease: 'easeInOut', duration: 0.25 }}
+      >
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-2"
+            className="space-y-3"
             id="2"
           >
             <FormField
               control={form.control}
-              name="hostelBlock"
+              name="applicationNumber"
+              defaultValue={secondStepData.applicationNumber}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Hostel Block</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select your current residence" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="On-Campus Hostels">
-                        On-Campus Hostels
-                      </SelectItem>
-                      <SelectItem value="Off-Campus Hostels">
-                        Off-Campus Hostels
-                      </SelectItem>
-                      <SelectItem value="Day Scholar">Day Scholar</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <FormLabel>Application Number</FormLabel>
+                  <FormControl>
+                    <Input placeholder="122115100" {...field} />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
             <FormField
               control={form.control}
-              name="messProvider"
+              name="registrationNumber"
+              defaultValue={secondStepData.registrationNumber}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Mess Provider</FormLabel>
+                  <FormLabel>Registration Number</FormLabel>
+                  <FormControl>
+                    <Input placeholder="225871000" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="yearOfGrad"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Year of Graduation</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select your current mess provider" />
+                        <SelectValue placeholder="Select expected year of graduation" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="Fixed - Blue Dove">
-                        Fixed - Blue Dove
-                      </SelectItem>
-                      <SelectItem value="Fixed - Chef's Touch">
-                        Fixed - Chef&apos;s Touch
-                      </SelectItem>
-                      <SelectItem value="Variable - Blue Dove">
-                        Variable - Blue Dove
-                      </SelectItem>
-                      <SelectItem value="Variable - Chef's Touch">
-                        Variable - Chef&apos;s Touch
-                      </SelectItem>
-                      <SelectItem value="No Mess Provider">
-                        No Mess Provider
-                      </SelectItem>
+                      <SelectItem value="2025">2025</SelectItem>
+                      <SelectItem value="2026">2026</SelectItem>
+                      <SelectItem value="2027">2027</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -123,7 +119,7 @@ export function Step2() {
             />
           </form>
         </Form>
-      </div>
+      </motion.div>
     </>
   );
 }
