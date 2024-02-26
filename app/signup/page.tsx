@@ -24,9 +24,9 @@ export default function SignUpContainer() {
   const { activeStep, setActiveStep } = useContext(SignUpContext);
 
   return (
-    <div className="flex min-h-screen w-full flex-col justify-around">
+    <div className="flex min-h-screen w-full flex-col justify-center">
       <Header activeStep={activeStep} />
-      <div className="flex items-center justify-center p-6">
+      <div className="flex items-center justify-center p-6 py-10 lg:p-4">
         <Card className="w-[350px]">
           <CardHeader>
             <CardTitle>Sign Up</CardTitle>

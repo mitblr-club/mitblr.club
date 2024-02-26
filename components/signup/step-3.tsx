@@ -71,7 +71,7 @@ export function Step3() {
                         <SelectValue placeholder="Select your current course/stream" />
                       </SelectTrigger>
                     </FormControl>
-                    <SelectContent>
+                    <SelectContent side="top">
                       <SelectItem value="CSE(Core)">CSE(Core)</SelectItem>
                       <SelectItem value="CSE(Artificial Intelligence)">
                         CSE(Artificial Intelligence)
@@ -105,7 +105,7 @@ export function Step3() {
                         <SelectValue placeholder="Select your current residence" />
                       </SelectTrigger>
                     </FormControl>
-                    <SelectContent>
+                    <SelectContent side="top">
                       <SelectItem value="On-Campus Hostels">
                         On-Campus Hostels
                       </SelectItem>
@@ -134,7 +134,7 @@ export function Step3() {
                         <SelectValue placeholder="Select your current mess provider" />
                       </SelectTrigger>
                     </FormControl>
-                    <SelectContent>
+                    <SelectContent side="top">
                       <SelectItem value="Fixed - Blue Dove">
                         Fixed - Blue Dove
                       </SelectItem>

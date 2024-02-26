@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export function Header({ activeStep }: { activeStep: number }) {
   return (
-    <header className="flex w-full items-center justify-center px-6 pt-5">
+    <header className="flex w-full items-center justify-center px-4 pt-2">
       <ul className="flex items-center justify-center ">
         {[1, 2, 3].map((step, index) => (
           <li

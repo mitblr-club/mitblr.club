@@ -107,7 +107,7 @@ export function Step2() {
                         <SelectValue placeholder="Select expected year of graduation" />
                       </SelectTrigger>
                     </FormControl>
-                    <SelectContent>
+                    <SelectContent side="top">
                       <SelectItem value="2025">2025</SelectItem>
                       <SelectItem value="2026">2026</SelectItem>
                       <SelectItem value="2027">2027</SelectItem>
