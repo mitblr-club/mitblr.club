@@ -29,6 +29,10 @@ export type SignUpContext = {
   setActiveStep: React.Dispatch<
     React.SetStateAction<SignUpContext['activeStep']>
   >;
+  confirmed: boolean;
+  setConfirmed: React.Dispatch<
+    React.SetStateAction<SignUpContext['confirmed']>
+  >;
 };
 
 export const SignUpContext = React.createContext<SignUpContext>(
@@ -59,7 +63,7 @@ export function SignUpContextProvider({
   });
 
   const [activeStep, setActiveStep] = useState(1);
-  const [direction, setDirection] = useState(0);
+  const [confirmed, setConfirmed] = useState(false);
 
   return (
     <SignUpContext.Provider
@@ -72,6 +76,8 @@ export function SignUpContextProvider({
         setThirdStepData,
         activeStep,
         setActiveStep,
+        confirmed,
+        setConfirmed,
       }}
     >
       {children}

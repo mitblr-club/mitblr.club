@@ -1,5 +1,7 @@
 'use client';
 
+import { AnimatePresence } from 'framer-motion';
+
 import { useContext } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -21,7 +23,8 @@ import {
 } from '@/components/ui/card';
 
 export default function SignUpContainer() {
-  const { activeStep, setActiveStep } = useContext(SignUpContext);
+  const { activeStep, setActiveStep, confirmed, setConfirmed } =
+    useContext(SignUpContext);
 
   return (
     <div className="flex min-h-screen w-full flex-col justify-center">
@@ -32,30 +35,45 @@ export default function SignUpContainer() {
             <CardTitle>Sign Up</CardTitle>
             <CardDescription>Start your journey with us today.</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6">
-            {activeStep === 1 && <Step1 />}
-            {activeStep === 2 && <Step2 />}
-            {activeStep === 3 && <Step3 />}
-            <div className="flex w-full gap-3">
-              <Button
-                type="button"
-                variant={activeStep === 1 ? 'ghost' : 'secondary'}
-                onClick={() => {
-                  setActiveStep((prev) => prev - 1);
-                }}
-                className={cn(
-                  activeStep === 1 ? 'text-white opacity-0' : '',
-                  'w-1/2'
-                )}
-                disabled={activeStep === 1}
-              >
-                Go Back
-              </Button>
-              <Button type="submit" form={`${activeStep}`} className="w-1/2">
-                Next
-              </Button>
-            </div>
-          </CardContent>
+          <AnimatePresence>
+            <CardContent className="space-y-6">
+              {activeStep === 1 && <Step1 />}
+              {activeStep === 2 && <Step2 />}
+              {activeStep === 3 && <Step3 />}
+              {activeStep === 4 && <Step4 />}
+              <div className="flex w-full gap-3">
+                <Button
+                  type="button"
+                  variant={activeStep === 1 ? 'ghost' : 'secondary'}
+                  onClick={() => {
+                    activeStep === 4 && setConfirmed(false);
+                    setActiveStep((prev) => prev - 1);
+                  }}
+                  className={cn(
+                    activeStep === 1 ? 'text-white opacity-0' : '',
+                    'w-1/2'
+                  )}
+                  disabled={activeStep === 1}
+                >
+                  Go Back
+                </Button>
+                <Button
+                  type="submit"
+                  form={`${activeStep}`}
+                  className={activeStep === 4 ? 'hidden' : 'w-1/2'}
+                >
+                  Next
+                </Button>
+                <Button
+                  className={activeStep === 4 ? 'w-1/2' : 'hidden'}
+                  onClick={() => setConfirmed(!confirmed)}
+                  disabled={confirmed}
+                >
+                  Confirm
+                </Button>
+              </div>
+            </CardContent>
+          </AnimatePresence>
         </Card>
       </div>
       <Footer />
