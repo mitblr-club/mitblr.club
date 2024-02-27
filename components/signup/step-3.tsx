@@ -29,8 +29,7 @@ const thirdStepSchema = y.object().shape({
 });
 
 export function Step3() {
-  const { activeStep, setActiveStep, thirdStepData, setThirdStepData } =
-    useContext(SignUpContext);
+  const { setActiveStep, setThirdStepData } = useContext(SignUpContext);
   const form = useForm<y.InferType<typeof thirdStepSchema>>({
     resolver: yupResolver(thirdStepSchema),
   });

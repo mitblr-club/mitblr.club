@@ -5,8 +5,6 @@ import * as y from 'yup';
 
 import { useContext } from 'react';
 
-import { cn } from '@/lib/utils';
-
 import { SignUpContext } from '@/components/signup/context';
 import {
   Form,
@@ -28,7 +26,7 @@ const firstStepSchema = y.object().shape({
 });
 
 export function Step1() {
-  const { activeStep, setActiveStep, firstStepData, setFirstStepData } =
+  const { setActiveStep, firstStepData, setFirstStepData } =
     useContext(SignUpContext);
   const form = useForm<y.InferType<typeof firstStepSchema>>({
     resolver: yupResolver(firstStepSchema),
