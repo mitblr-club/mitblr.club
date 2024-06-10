@@ -5,7 +5,7 @@ module.exports = withContentlayer({
     return [
       {
         source: '/',
-        destination: 'https://forms.office.com/r/uS1grDcAuW',
+        destination: '/about',
         permanent: false,
       },
     ];
