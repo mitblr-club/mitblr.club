@@ -19,6 +19,14 @@
     "@trivago/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss"
   ],
+  "overrides": [
+    {
+      "files": "*.mdx",
+      "options": {
+        "proseWrap": "always"
+      }
+    }
+  ],
   "semi": true,
   "singleQuote": true,
   "tabWidth": 2,
