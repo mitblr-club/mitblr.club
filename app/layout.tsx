@@ -29,11 +29,10 @@ export const metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    'Next.js',
-    'React',
-    'Tailwind CSS',
-    'Server Components',
-    'Radix UI',
+    'MIT Bengaluru',
+    'Web Templates',
+    'Student Project',
+    'mitblr.club',
   ],
   authors: [
     {
@@ -44,27 +43,14 @@ export const metadata = {
       name: 'Raghav Gupta',
       url: 'https://alphaspiderman.dev',
     },
+    {
+      name: 'Hari Keshav Rajesh',
+      url: '',
+    },
   ],
   creator: 'Abhigyan Tripathi',
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: [`${siteConfig.url}/og.jpg`],
-    creator: '@AbhigyanTrips',
-  },
   icons: {
     icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
 };
