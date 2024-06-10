@@ -1,0 +1,115 @@
+---
+title: About The Project
+description: Learn more about the services provided by mitblr.club
+---
+
+<br />
+
+## Our Aim
+
+Every institution has multiple student clubs, each aspiring to have their own
+digital presence. A key component of any digital presence is a **centralized
+hub** that expresses the vision and dash of the club.
+
+The scale and scope of this hub varies with the requirements of the club/chapter
+and their community. However, there are challenges from both financial and human
+resource perspectives that constrain the club from building this on their own.
+
+Hence, **mitblr.club** aims to provide student communities with the relevant
+technologies to kickstart their own social space on the internet.
+
+## Our Solution
+
+The problem we’re trying to address is a flexible one, creating the need for a
+dynamic solution. Each club has a requirement based on their own scale and
+budget. To ensure the solution we offer is one that can be of assistance to all
+clubs, we have designed a three-tier system.
+
+### Tier 1: Custom Domain
+
+We are offering a domain of the form <code>{"{club_name}"}.mitblr.club</code>,
+to each club in the college, free of cost. The objective of this tier is to
+relieve clubs from using their own budget for building their digital presence,
+enabling them to use it for events and projects as they wish.
+
+> If clubs/chapters are planning to host their own sites and require web
+> analytics and/or image optimization, we recommend having their own account on
+> a relevant hosting platform and ask us for a redirect domain. For more
+> information, see [Technical Information](#technical-information).
+
+### Tier 2: "Linked List" System
+
+This tier is for clubs/chapters that do not require a fully-fledged website, but
+could benefit from a system like [Linktree](https://linktr.ee/) that has all
+their links in one place.
+
+Our _\*cough\*_ **"Linked List" project** allows student clubs to have a central
+hub for all their social media handles, GitHub organisations, and any other link
+that is relevant to the club in a visual format that speaks about the club’s
+vision and goals.
+
+![Linked List Demo](/demo-linkedlist.png)
+
+A working demo of this tier can be found
+[here](https://linkedlist.mitblr.club/).
+
+### Tier 3: Fully Custom Template
+
+This tier is a fully-fledged, mobile responsive website template (with **dark
+mode**!) that can be used by clubs that do not have the time or resources to
+build their own site.
+
+![Template Home Page](/demo-template.png)
+
+The site also has pages for the club's **blogs** and **events** to create a
+sense of community. Here, the logistics/operations team of the club can add,
+delete, order and even set featured events from where students can directly
+access the registration forms.
+
+<div className="mt-6 flex w-full flex-col gap-4 md:inline-flex md:flex-row">
+  <img src="/demo-blogs.png" className="w-full rounded-md md:w-[49.5%]" />
+  <img src="/demo-events.png" className="w-full rounded-md md:w-[49.5%]" />
+</div>
+
+All content is edited and managed on [Notion](https://notion.so), so that the
+content is displayed on the site just as expected by the core committee. Since
+the platform is based on a **no-code approach**, editing content doesn't require
+touching a single line of HTML and all site configuration is done through simple
+JSON files.
+
+![Notion Page Demo](/demo-notion.png)
+
+A working demo of this tier can be found [here](https://template.mitblr.club/).
+
+> Clubs can choose the tier of their choice based on their requirements. Each
+> tier comes with all products that are mentioned in the lower tiers as well.
+> For instance, Tier 2 also comes with the domain given by Tier 1.
+
+## Working with Student Welfare
+
+**mitblr.club** works directly in unison with the Student Welfare of MIT
+Bengaluru - thus mandating that all clubs/chapters **must pick one of the tiers
+offered**. This is to ensure uniform domain names, allowing students to easily
+visit the website of the club of their choice.
+
+## Technical Information
+
+- All websites have been built using [Next.JS](https://nextjs.org/), A React
+  framework with [Tailwind CSS](https://tailwindcss.com/),
+  [Contentlayer](https://contentlayer.dev/), and
+  [shadcn/ui](https://ui.shadcn.com/) components.
+- We host our **Tier 2** and **Tier 3** sites on
+  [Vercel's Pro Plan](https://vercel.com/pricing), which allows for secure team
+  collaboration and higher scalability. Since their image optimization feature
+  is still limited in this plan, it is reserved for use on **mitblr.club**'s own
+  sites.
+- All content for events and blogs is handled through **Notion's "Database
+  Tables"**, which hold the page content and all its corresponding attributes.
+  Each club/chapter can freely maintain admin access and hold rights to their
+  own content.
+- We fetch data from Notion using Splitbee's
+  [notion-api-worker](https://github.com/splitbee/notion-api-worker), which is
+  then displayed using their lightweight
+  [react-notion](https://react-notion.com/) library.
+- All of our projects are open-source, and the source code is available on
+  [our GitHub organization](https://github.com/mitblr-club).
