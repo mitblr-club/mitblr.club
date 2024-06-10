@@ -29,7 +29,7 @@ export type SiteConfig = {
   ogImage: string;
   navItems: NavItem[];
   links: {
-    twitter: string;
+    institute: string;
     github: string;
   };
 };

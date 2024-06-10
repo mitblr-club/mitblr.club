@@ -1,6 +1,6 @@
-import { siteConfig } from '@/config/site';
-
 import * as React from 'react';
+
+import { siteConfig } from '@/config/site';
 
 import { cn } from '@/lib/utils';
 
@@ -14,14 +14,23 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
           <p className="text-center text-sm leading-loose md:text-left">
             Built by{' '}
             <a
-              href={siteConfig.links.twitter}
+              href={siteConfig.links.github + '/people'}
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
             >
-              AbhigyanTrips
+              students
             </a>
-            . All rights reserved.
+            , for{' '}
+            <a
+              href={siteConfig.links.institute}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline underline-offset-4"
+            >
+              students
+            </a>
+            .
           </p>
         </div>
       </div>

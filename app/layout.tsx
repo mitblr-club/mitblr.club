@@ -49,8 +49,11 @@ export const metadata: Metadata = {
       url: '',
     },
   ],
-  creator: 'Abhigyan Tripathi',
   twitter: {
+    images: '/og.png',
+  },
+  openGraph: {
+    type: 'website',
     images: '/og.png',
   },
   icons: {

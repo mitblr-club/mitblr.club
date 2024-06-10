@@ -16,7 +16,7 @@ export const siteConfig: SiteConfig = {
     },
   ],
   links: {
-    twitter: 'https://twitter.com/AbhigyanTrips',
+    institute: 'https://manipal.edu/mitblr',
     github: 'https://github.com/mitblr-club',
   },
 };
