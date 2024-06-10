@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import localFont from 'next/font/local';
 
@@ -21,7 +22,7 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(`http://localhost:${process.env.PORT || 3000}`),
   title: {
     default: siteConfig.name,
@@ -49,6 +50,9 @@ export const metadata = {
     },
   ],
   creator: 'Abhigyan Tripathi',
+  twitter: {
+    images: '/og.png',
+  },
   icons: {
     icon: '/favicon.ico',
   },
