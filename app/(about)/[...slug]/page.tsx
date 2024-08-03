@@ -1,8 +1,9 @@
-import { siteConfig } from '@/config/site';
 import { allPages } from 'contentlayer/generated';
 
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+
+import { siteConfig } from '@/config/site';
 
 import { absoluteUrl } from '@/lib/utils';
 
