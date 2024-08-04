@@ -400,34 +400,34 @@ export default function ConfigGenerator() {
         </form>
       </Form>
       <CodeBlock
-        code={`import { NavItem } from '@/types/nav-item';
+        code={`import { NavItem } from "@/types/nav-item";
 
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: '${data.name}',
-  institution: '${data.institution}',
-  description: '${data.description}',
-  eventsTableId: '${data.eventsTableId}',
-  blogTableId: '${data.blogTableId}',
+  name: "${data.name}",
+  institution: "${data.institution}",
+  description: "${data.description}",
+  eventsTableId: "${data.eventsTableId}",
+  blogTableId: "${data.blogTableId}",
   navLinks: [${data.navLinks.map((field) => {
     return `
     {
-        title: '${field.title}',
-        href: '${field.href}',
+        title: "${field.title}",
+        href: "${field.href}",
     }`;
   })}
   ] satisfies NavItem[],
   mediaLinks: {
-    instagram: '${data.mediaLinks.instagram}',
-    linkedin: '${data.mediaLinks.linkedin}',
-    github: '${data.mediaLinks.github}',
-    twitter: '${data.mediaLinks.twitter}',
-    institute: '${data.mediaLinks.institute}',
+    instagram: "${data.mediaLinks.instagram}",
+    linkedin: "${data.mediaLinks.linkedin}",
+    github: "${data.mediaLinks.github}",
+    twitter: "${data.mediaLinks.twitter}",
+    institute: "${data.mediaLinks.institute}",
   },
   contactDetails: {
-    number: '${data.contactDetails.number}',
-    email: '${data.contactDetails.email}',
+    number: "${data.contactDetails.number}",
+    email: "${data.contactDetails.email}",
   }
 };`}
         filename="config/site.ts"
