@@ -6,7 +6,7 @@ export default function CopyToClipboard({ code }: { code: string }) {
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(code);
-      toast.success('Copied code to clipboard.');
+      toast.success('Code copied to clipboard.');
     } catch (error) {
       console.error('Error copying to clipboard', error);
       toast.error("Couldn't copy to clipboard.");

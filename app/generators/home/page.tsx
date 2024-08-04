@@ -10,6 +10,7 @@ import { useState } from 'react';
 import CodeBlock from '@/components/code-block';
 import { FormFooter } from '@/components/form-footer';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import {
   Form,
   FormControl,
@@ -56,7 +57,7 @@ export default function ConfigGenerator() {
         {
           question: 'Is mitblr.club free to use?',
           answer:
-            'Yes, mitblr.club is compltely free to use, including obtaining a club specific subdomain and Outlook ID',
+            'Yes, mitblr.club is completely free to use, including obtaining a club specific subdomain and Outlook ID',
         },
         {
           question: 'Does mitblr.club have a mobile app?',
@@ -98,8 +99,11 @@ export default function ConfigGenerator() {
                 >
                   Tier 3 template
                 </a>
-                ? Type in your club{"'"}s details in order to export your own
-                configuration file.
+                ? Export a{' '}
+                <code className="text-md rounded-sm bg-muted px-1 py-0.5">
+                  config/home.ts
+                </code>{' '}
+                file for your club{"'"}s homepage settings.
               </p>
             </div>
             <Button
@@ -169,16 +173,46 @@ export default function ConfigGenerator() {
               to see a working example of this config.
             </i>
             {fields.map((field, index) => (
-              <div key={field.id} className="flex flex-col gap-3">
-                <div className="flex gap-3">
+              <Card key={field.id}>
+                <CardHeader className="pb-3">
+                  <div className="flex gap-3">
+                    <FormField
+                      {...form.register(`FAQConfig.${index}.question` as const)}
+                      render={({ field }) => (
+                        <FormItem className="w-full font-mono">
+                          <FormControl>
+                            <Input
+                              placeholder="Question"
+                              className="bg-muted"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <Button
+                      onClick={() => {
+                        remove(index);
+                        setData(form.getValues());
+                      }}
+                      size="icon"
+                      variant="outline"
+                      className="hover:text-destructive"
+                    >
+                      <Trash2Icon className="h-5 w-5" />
+                    </Button>
+                  </div>
+                </CardHeader>
+                <CardContent className="flex flex-col gap-3">
                   <FormField
-                    {...form.register(`FAQConfig.${index}.question` as const)}
+                    {...form.register(`FAQConfig.${index}.answer` as const)}
                     render={({ field }) => (
-                      <FormItem className="w-full font-mono">
+                      <FormItem>
                         <FormControl>
-                          <Input
-                            placeholder="Question"
-                            className="bg-muted"
+                          <Textarea
+                            placeholder="Enter your answer here..."
+                            className="resize-none"
                             {...field}
                           />
                         </FormControl>
@@ -186,37 +220,8 @@ export default function ConfigGenerator() {
                       </FormItem>
                     )}
                   />
-                  <Button
-                    onClick={() => {
-                      remove(index);
-                      setData(form.getValues());
-                    }}
-                    size="icon"
-                    variant="outline"
-                    className="hover:text-destructive"
-                  >
-                    <Trash2Icon className="h-5 w-5" />
-                  </Button>
-                </div>
-
-                <FormField
-                  {...form.register(`FAQConfig.${index}.answer` as const)}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Textarea
-                          placeholder="Enter your answer here..."
-                          className="resize-none"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <hr className="my-1" />
-              </div>
+                </CardContent>
+              </Card>
             ))}
             <Button
               onClick={() =>
@@ -251,12 +256,12 @@ export const homeConfig = {
 	description: "${data.description}",
 	FAQConfig : [${data.FAQConfig.map((field) => {
     return `
-    {
-        question: "${field.question}",
-        answer: \`${field.answer}\`,
-    }`;
+      {
+          question: "${field.question}",
+          answer: \`${field.answer}\`,
+      }`;
   })}
-  ] satisfies FAQItem[],
+    ] satisfies FAQItem[],
 };`}
         filename="config/home.ts"
       />
