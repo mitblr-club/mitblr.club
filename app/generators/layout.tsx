@@ -6,6 +6,8 @@ import { siteConfig } from '@/config/site';
 
 import { cn } from '@/lib/utils';
 
+import { Toaster } from '@/components/ui/sonner';
+
 import '@/styles/globals.css';
 
 const fontSans = FontSans({
@@ -74,6 +76,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         )}
       >
         {children}
+        <Toaster position="bottom-center" />
       </body>
     </html>
   );
